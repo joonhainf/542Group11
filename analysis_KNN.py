@@ -14,7 +14,7 @@ import seaborn as sns
 
 
 
-#First split the data by a delimiter and store into variable data, nrows is 1000 for computational purposes.
+#First split the data by a delimiter and store into variable data
 df = pd.read_table("steam_games.csv", delimiter = ";", low_memory=False)
 
 ##Create a binary variable which will be 0 if there is no discount and 1 if there is any discount

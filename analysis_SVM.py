@@ -16,13 +16,15 @@ from matplotlib.colors import ListedColormap
 from sklearn.preprocessing import LabelEncoder
 from sklearn.datasets import make_blobs
 from sklearn import svm, datasets
+from sklearn.preprocessing import StandardScaler
+
 
 #First split the data by a delimiter and store into variable data, nrows is 1000 for computational purposes.
 df = pd.read_table("steam_games.csv", delimiter = ";", low_memory=False, nrows = 1000)
 
 ##Create a binary variable which will be 0 if there is no discount and 1 if there is any discount
 
-df['Has_Discount'] = ['Yes' if x==0 else 'No'  for x in df['Discount']]
+df['Has_Discount'] = [0 if x==0 else 1  for x in df['Discount']]
 
 pd.set_option('display.max_columns', 500)
 df
@@ -42,6 +44,7 @@ Y_test = test_set.iloc[:,22].values
 
 #High C value of 10, such that the margin of the SVM is small and we are okay with misclassifying a few points.
 classifier = SVC(kernel = 'rbf', C=10, gamma=10)
+#This part will take a while
 classifier.fit(X_train,Y_train)
 Y_pred = classifier.predict(X_test)
 test_set["Predictions"] = Y_pred
@@ -52,8 +55,13 @@ cm = confusion_matrix(Y_test,Y_pred)
 accuracy = cm.diagonal().sum()/len(Y_test)
 print("\nSVM Accuracy : ", accuracy)
 
+sc = StandardScaler()
+X_train = sc.fit_transform(X_train)
+X_test = sc.transform(X_test)
+
 ##Linear SVM with the purpose of showing the support vectors vs the training data
-classifier1 = SVC(kernel = 'linear', C=10, gamma=10)
+classifier1 = SVC(kernel = 'linear', C=10, gamma=10,probability=False)
+#This part will take a while
 classifier1.fit(X_train,Y_train)
 
 support_vectors = classifier1.support_vectors_
