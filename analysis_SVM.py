@@ -1,7 +1,5 @@
 #Luke Hwang's project "Group" 
 
-#First split the data by a delimiter and store into variable data
-
 #Can use SVM model to find distinctions between two genres of games.
 
 import numpy as np
@@ -19,14 +17,12 @@ from sklearn.preprocessing import LabelEncoder
 from sklearn.datasets import make_blobs
 from sklearn import svm, datasets
 
-
+#First split the data by a delimiter and store into variable data, nrows is 1000 for computational purposes.
 df = pd.read_table("steam_games.csv", delimiter = ";", low_memory=False, nrows = 1000)
 
 ##Create a binary variable which will be 0 if there is no discount and 1 if there is any discount
 
 df['Has_Discount'] = ['Yes' if x==0 else 'No'  for x in df['Discount']]
-
-df.insert( "Has_Discount",df.["Discount"], True)
 
 pd.set_option('display.max_columns', 500)
 df
@@ -38,7 +34,7 @@ print(corr)
 
 training_set, test_set = train_test_split(df, test_size = 0.2, random_state = 1)
 
-#Are Negative Reviews and Initial Price related to the availability of discounts?
+#Are Negative Reviews and Initial Price related to the availability of discounts? Here we set up the necessary training data for it.
 X_train = training_set.iloc[:,[11,13]].values
 Y_train = training_set.iloc[:,22].values
 X_test = test_set.iloc[:,[11,13]].values
@@ -50,6 +46,8 @@ classifier.fit(X_train,Y_train)
 Y_pred = classifier.predict(X_test)
 test_set["Predictions"] = Y_pred
 
+
+#Utilize confusion matrix for accuracy computations.
 cm = confusion_matrix(Y_test,Y_pred)
 accuracy = cm.diagonal().sum()/len(Y_test)
 print("\nSVM Accuracy : ", accuracy)
