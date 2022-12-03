@@ -8,6 +8,8 @@ import matplotlib.pyplot as plt
 from sklearn.preprocessing import StandardScaler
 from sklearn.metrics import mean_absolute_error, mean_squared_error
 from sklearn.neighbors import KNeighborsRegressor
+from sklearn.metrics import classification_report, confusion_matrix
+import seaborn as sns
 
 
 
@@ -64,7 +66,7 @@ plt.xlabel('n_neighbors')
 plt.ylabel('Accuracy')
 plt.show()
 
-y_pred = knn.predict(X_test)
+y_pred = knn.best_estimator_.predict(X_test)
 
 mae = mean_absolute_error(y_test, y_pred)
 mse = mean_squared_error(y_test, y_pred)
@@ -96,18 +98,10 @@ plt.xlabel('K Value')
 plt.ylabel('Mean Absolute Error')
 plt.show()
 
-from sklearn.metrics import classification_report, confusion_matrix
-import seaborn as sns
 
-# Adding classes names for better interpretation
-classes_names = ['class 1','class 2','class 3', 'class 4']
-cm = pd.DataFrame(confusion_matrix(yc_test, yc_pred), 
-                  columns=classes_names, index = classes_names)
-                  
 
-import warnings
-warnings.filterwarnings('always')    
-# Seaborn's heatmap to better visualize the confusion matrix
+cm = confusion_matrix(y_test, y_pred) 
+
 sns.heatmap(cm, annot=True, fmt='d')
 
 print(classification_report(y_test, y_pred, zero_division = 1))
