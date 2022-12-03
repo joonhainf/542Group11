@@ -1,1 +1,2 @@
-# 542Group11
+# Steam Video Games: Can we predict which games have discounts? BZAN 542
+
