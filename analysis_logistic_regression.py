@@ -8,6 +8,8 @@ import numpy as np
 from sklearn.metrics import classification_report
 from sklearn import metrics
 import seaborn as sns
+import statsmodels.api as sm
+
 
 
 #First split the data by a delimiter and store into variable data
