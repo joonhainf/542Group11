@@ -26,6 +26,12 @@ I decided to use SVC in an attempt to seperate certain characteristics as predic
 I have plotted out SVM scatterplots in the respective files.
 However, all SVM models fail to split the dataset in a meaningful way. In analysis_SVM.py, I try to find train the data on Negative Reviews and Initial Price to see if the games with discounts would be seperated this way. However, this did not work.
 
+In another file I run that model that uses positive reviews and CCU (number of concurrent gamers) to predict reputation. Reputation would be defined as good if the ratio of positive to negative reviews is 10 or more. It would be bad otherwise.
+
+And in my third SVM file I use positive reviews and CCU to predict if a game is free to play. A game is free to play if it has this tag in their genre's column in the dataset.
+
+
+
 
 
 # K nearest Neighbors
