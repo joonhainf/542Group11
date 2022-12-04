@@ -24,6 +24,9 @@ The easiest step was to figure out how to delimit the excel file. We delimited b
 This was the primary machine learning technique I used to try and figure out the problem. These files are all labeled analysis_SVM.py, analysis_SVM_2.py, etc.
 I decided to use SVC in an attempt to seperate certain characteristics as predictive of the answer. I used a training set of 80% of the dataset and the rest of it was test.
 I have plotted out SVM scatterplots in the respective files.
+However, all SVM models fail to split the dataset in a meaningful way. In analysis_SVM.py, I try to find train the data on Negative Reviews and Initial Price to see if the games with discounts would be seperated this way. However, this did not work.
+
+
 
 # K nearest Neighbors
 
