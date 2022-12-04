@@ -47,6 +47,9 @@ I was able to generate satisfactory results using KNN. In the following results 
    macro avg       0.58      0.50      0.49     11139
 weighted avg       0.92      0.96      0.93     11139
 
+![LOG3classification_report](https://user-images.githubusercontent.com/28285099/205476205-a7a8521e-e86d-455c-bd46-ea25920bafc1.png)
+
+
 Figure 1: Output from classification report.
 
 However, I think something is not right with the KNN model, so I hesitate to say this is a definitive model.
