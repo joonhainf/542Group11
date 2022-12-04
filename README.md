@@ -19,5 +19,26 @@ The following methods were utilized:
 The dataset used was admittedly from Kaggle https://www.kaggle.com/datasets/tristan581/all-55000-games-on-steam-november-2022, however it was not without its challenges.
 The easiest step was to figure out how to delimit the excel file. We delimited based on the semicolon, or ";". However there was also the challenge of appending an extra column to the dataset, which involved some conditional programming. We also needed to find out how to detect certain genres in games, which required some skills in text parsing. This was done in later versions of analysis_SVM.
 
+# Support Vector Classification
+
+This was the primary machine learning technique I used to try and figure out the problem. These files are all labeled analysis_SVM.py, analysis_SVM_2.py, etc.
+I decided to use SVC in an attempt to seperate certain characteristics as predictive of the answer. I used a training set of 80% of the dataset and the rest of it was test.
+I have plotted out SVM scatterplots in the respective files.
+
+# K nearest Neighbors
+
+I was able to generate satisfactory results using KNN. In the following results from analysis_KNN.py, I attempt to use 4 variables, {Positive Reviews, Negative Reviews, Initial Price, CCU} to predict the fifth variable {Has_Discount}. I predicted the absense of a discount with an f1 score of 98%.
+
+              precision    recall  f1-score   support
+
+           0       0.96      1.00      0.98     10643
+           1       0.20      0.00      0.00       496
+
+    accuracy                           0.96     11139
+   macro avg       0.58      0.50      0.49     11139
+weighted avg       0.92      0.96      0.93     11139
+
+Figure 1: Output from classification report.
+
 
 
