@@ -1,2 +1,4 @@
-# Steam Video Games: Can we predict which games have discounts? BZAN 542
+# Steam Video Games: Attempting to predict discounts and genres. BZAN 542
+
+
 
