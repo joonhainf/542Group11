@@ -40,7 +40,7 @@ In my fourth SVM file I tried seperating the data by having a model with x = Pos
 
 ![SVM4](https://user-images.githubusercontent.com/28285099/205476400-655f4563-721d-4675-920f-7b7f7783b2cc.png)
 
-I then realized that the Support Vector Classification model only works when there are extreme differences between two classes of variables. If there is simply an association that is not enough. So, I turned to other methods. 
+I then realized that the Support Vector Classification model only works when there are extreme differences between two classes of variables. If there is simply a relationship between x and Y that is not enough. So, I turned to other methods. 
 
 
 
