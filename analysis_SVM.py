@@ -106,6 +106,8 @@ Z = model.decision_function(xy).reshape(XX.shape)
 ax.contour(XX, YY, Z, colors='k', levels=[-1, 0, 1], alpha=0.5, linestyles=['--', '-', '--'])
 # Highlight support vectors with a circle around them
 ax.scatter(model.support_vectors_[:, 0], model.support_vectors_[:, 1], s=100, linewidth=1, facecolors='none', edgecolors='k')
+plt.ylabel('Initial Price')
+plt.xlabel('Negative Reviews')
 plt.show()
 plt.clf()
 plt.cla()
