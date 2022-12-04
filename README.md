@@ -40,5 +40,16 @@ weighted avg       0.92      0.96      0.93     11139
 
 Figure 1: Output from classification report.
 
+However, I think something is not right with the KNN model, so I hesitate to say this is a definitive model.
+
+
+# Logistic Regression
+
+Useful for plotting heatmaps, however I found its uses to be limited and I would primarily stick to SVMs.
+
+# What to Run
+
+
+
 
 
