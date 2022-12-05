@@ -1,4 +1,4 @@
-
+#All the packages
 import pandas as pd
 import matplotlib.pyplot as plt
 from sklearn.neighbors import KNeighborsClassifier
@@ -37,14 +37,17 @@ scaler.fit(X_train)
 X_train = scaler.transform(X_train)
 X_test = scaler.transform(X_test)
 
+#Run this
 knn = KNeighborsClassifier(n_neighbors=7)
   
 knn.fit(X_train, y_train)
   
-# Predict on dataset which model has not seen before
+
 print(knn.predict(X_test))
 
+
 neighbors = np.arange(1, 9)
+#Training and test accuracy for the loop later
 train_accuracy = np.empty(len(neighbors))
 test_accuracy = np.empty(len(neighbors))
   
@@ -53,7 +56,7 @@ for i, k in enumerate(neighbors):
     knn = KNeighborsClassifier(n_neighbors=k)
     knn.fit(X_train, y_train)
       
-    # Compute training and test data accuracy
+    # Training and test data accuracy
     train_accuracy[i] = knn.score(X_train, y_train)
     test_accuracy[i] = knn.score(X_test, y_test)
   
@@ -67,7 +70,7 @@ plt.ylabel('Accuracy')
 plt.show()
 
 y_pred = knn.best_estimator_.predict(X_test)
-
+#Statistics
 mae = mean_absolute_error(y_test, y_pred)
 mse = mean_squared_error(y_test, y_pred)
 rmse = mean_squared_error(y_test, y_pred, squared=False)
@@ -79,7 +82,7 @@ knn.score(X_test, y_test)
 
 error = []
 
-# Calculating MAE error for K values between 1 and 39
+#Looping over things.
 for i in range(1, 40):
     knn = KNeighborsRegressor(n_neighbors=i)
     knn.fit(X_train, y_train)
@@ -99,7 +102,7 @@ plt.ylabel('Mean Absolute Error')
 plt.show()
 
 
-
+#Visualization
 cm = confusion_matrix(y_test, y_pred) 
 
 sns.heatmap(cm, annot=True, fmt='d')
@@ -111,12 +114,12 @@ from sklearn.metrics import f1_score
 
 f1s = []
 
-# Calculating f1 score for K values between 1 and 40
+
 for i in range(1, 40):
     knn = KNeighborsClassifier(n_neighbors=i)
     knn.fit(X_train, y_train)
     pred_i = knn.predict(X_test)
-    # using average='weighted' to calculate a weighted average for the 4 classes 
+    
     f1s.append(f1_score(y_test, pred_i, average='weighted'))
 
 plt.figure(figsize=(12, 6))
@@ -127,6 +130,7 @@ plt.xlabel('K Value')
 plt.ylabel('F1 Score')
 plt.show()
 
+#Classification Report
 classifier4 = KNeighborsClassifier(n_neighbors=4)
 classifier4.fit(X_train, y_train)
 y_pred4 = classifier4.predict(X_test)
