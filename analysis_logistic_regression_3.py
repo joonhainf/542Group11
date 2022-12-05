@@ -1,3 +1,4 @@
+#Needed packages
 from sklearn import linear_model
 from sklearn.linear_model import LogisticRegression
 from sklearn.model_selection import train_test_split
@@ -13,11 +14,14 @@ import statsmodels.api as sm
 
 df = pd.read_table("steam_games.csv", delimiter = ";", low_memory=False, nrows = 20000)
 
+#Looking for Multiplayer FPS games
 df['tag'] = df['Tags'].astype(str)
 df['big_FPS'] = [1 if 'FPS' in x and 'Multiplayer' in x else 0 for x in df['tag']]
 
+#Reshape the df for x for some reason
 X = df['Positive Reviews'].values.reshape(-1,1)
 y = df['big_FPS'].values
+
 
 logr = linear_model.LogisticRegression()
 logr.fit(X,y)
@@ -36,7 +40,7 @@ def logit2prob(logr, X):
 
 print(logit2prob(logr, X))
 
-#New approach
+#New approach to get tangible results
 
 print(df.describe())
 
@@ -46,6 +50,7 @@ logisticRegr = LogisticRegression()
 
 logisticRegr.fit(x_train, y_train)
 
+#accuracy
 score = logisticRegr.score(x_test, y_test)
 print(score)
 
@@ -54,6 +59,7 @@ import seaborn as sns
 from sklearn import metrics
 predictions = logisticRegr.predict(x_test)
 
+#Confusion matrix and heatmap, all that stuff
 cm = metrics.confusion_matrix(y_test, predictions)
 print(cm)
 

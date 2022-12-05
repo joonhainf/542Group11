@@ -4,6 +4,7 @@
 
 #Can use SVM model to find distinctions between two genres of games.
 
+#all them packages
 import numpy as np
 import pandas as pd
 import seaborn as sns
@@ -94,7 +95,7 @@ fig, ax = plt.subplots(figsize=(12, 7))
 ax.spines['top'].set_visible(False)
 ax.spines['left'].set_visible(False)
 ax.spines['right'].set_visible(False)
-# adding major gridlines
+
 ax.grid(color='grey', linestyle='-', linewidth=0.25, alpha=0.5)
 ax.scatter(features[:-test_size]['Positive Reviews'], features[:-test_size]['CCU'], color="#8C7298")
 
@@ -109,29 +110,29 @@ plt.close()
 model = svm.SVC(kernel='linear')
 model.fit(X_train, Y_train)
 
-# Removing to and right border
+
 fig, ax = plt.subplots(figsize=(12, 7))
 ax.set_yscale('log')
 ax.set_xscale('log')
 ax.spines['top'].set_visible(False)
 ax.spines['left'].set_visible(False)
 ax.spines['right'].set_visible(False)
-# Create grid to evaluate model
+
 xx = np.linspace(-1, max(features['Positive Reviews']) + 1, len(X_train))
 yy = np.linspace(0, max(features['CCU']) + 1, len(Y_train))
 YY, XX = np.meshgrid(yy, xx)
 xy = np.vstack([XX.ravel(), YY.ravel()]).T
 train_size = len(features[:-test_size]['Positive Reviews'])
-# Assigning different colors to the classes
+# Different color
 colors = Y_train
 colors = np.where(colors == 1, '#8C7298', '#4786D1')
 # Plot the dataset
 ax.scatter(features[:-test_size]['Positive Reviews'], features[:-test_size]['CCU'], c=colors)
-# Get the separating hyperplane
+# Get the separating line
 Z = model.decision_function(xy).reshape(XX.shape)
-# Draw the decision boundary and margins
+# Draw the decision boundary with margins
 ax.contour(XX, YY, Z, colors='k', levels=[-1, 0, 1], alpha=0.5, linestyles=['--', '-', '--'])
-# Highlight support vectors with a circle around them
+# Highlight support vectors with a circle
 ax.scatter(model.support_vectors_[:, 0], model.support_vectors_[:, 1], s=100, linewidth=1, facecolors='none', edgecolors='k')
 plt.ylabel('CCU')
 plt.xlabel('Positive Reviews')

@@ -15,6 +15,7 @@ import statsmodels.api as sm
 #First split the data by a delimiter and store into variable data
 df = pd.read_table("steam_games.csv", delimiter = ";", low_memory=False, nrows = 20000)
 
+#Am looking for games that contain the "Free to Play" genre.
 df['genre'] = df['Genre'].astype(str)
 df['Free'] = [1 if 'Free to Play'  in x else 0 for x in df['genre']]
 
@@ -32,10 +33,11 @@ logreg.fit(X_train, y_train)
 
 y_pred = logreg.predict(X_test)
 
+#Confusion
 cnf_matrix = metrics.confusion_matrix(y_test, y_pred)
 cnf_matrix
 
-class_names=[0,1] # name  of classes
+class_names=[0,1]
 fig, ax = plt.subplots()
 tick_marks = np.arange(len(class_names))
 plt.xticks(tick_marks, class_names)
@@ -48,6 +50,7 @@ plt.title('Confusion matrix', y=1.1)
 plt.ylabel('Actual label')
 plt.xlabel('Predicted label')
 
+#classification report
 print(classification_report(y_test, y_pred))
 plt.show()
 

@@ -82,7 +82,7 @@ plt.show()
 #C set to 10
 model = svm.SVC(kernel='linear',C=1, gamma=10,probability=False)
 model.fit(X_train, Y_train)
-# Removing to and right border
+
 fig, ax = plt.subplots(figsize=(12, 7))
 ax.set_yscale('log')
 ax.set_xscale('log')
@@ -95,14 +95,14 @@ yy = np.linspace(0, max(features['Initial Price']) + 1, len(Y_train))
 YY, XX = np.meshgrid(yy, xx)
 xy = np.vstack([XX.ravel(), YY.ravel()]).T
 train_size = len(features[:-test_size]['Negative Reviews'])
-# Assigning different colors to the classes
+# Color assignment
 colors = Y_train
 colors = np.where(colors == 1, '#8C7298', '#4786D1')
 # Plot the dataset
 ax.scatter(features[:-test_size]['Negative Reviews'], features[:-test_size]['Initial Price'], c=colors)
-# Get the separating hyperplane
+# Get the separating line
 Z = model.decision_function(xy).reshape(XX.shape)
-# Draw the decision boundary and margins
+# Draw the decision boundary with margins
 ax.contour(XX, YY, Z, colors='k', levels=[-1, 0, 1], alpha=0.5, linestyles=['--', '-', '--'])
 # Highlight support vectors with a circle around them
 ax.scatter(model.support_vectors_[:, 0], model.support_vectors_[:, 1], s=100, linewidth=1, facecolors='none', edgecolors='k')
