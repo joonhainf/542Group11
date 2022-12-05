@@ -82,7 +82,7 @@ knn.score(X_test, y_test)
 
 error = []
 
-#Looping over things.
+#Looping over things.$
 for i in range(1, 40):
     knn = KNeighborsRegressor(n_neighbors=i)
     knn.fit(X_train, y_train)

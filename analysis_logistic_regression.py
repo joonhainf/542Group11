@@ -1,4 +1,4 @@
-##LOGISTIC REGRESSION
+##LOGISTIC REGRESSION$
 from sklearn.linear_model import LogisticRegression
 from sklearn.model_selection import train_test_split
 import pandas as pd
@@ -35,12 +35,12 @@ y_pred = logreg.predict(X_test)
 cnf_matrix = metrics.confusion_matrix(y_test, y_pred)
 cnf_matrix
 
-class_names=[0,1] # name  of classes
+class_names=[0,1] 
 fig, ax = plt.subplots()
 tick_marks = np.arange(len(class_names))
 plt.xticks(tick_marks, class_names)
 plt.yticks(tick_marks, class_names)
-# create heatmap
+
 sns.heatmap(pd.DataFrame(cnf_matrix), annot=True, cmap="YlGnBu" ,fmt='g')
 ax.xaxis.set_label_position("top")
 plt.tight_layout()
