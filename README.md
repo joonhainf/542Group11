@@ -78,6 +78,19 @@ All in all, looks solid with an extremely high f1 score 0.99.
 analysis_logistic_regression_3.py is what to run for the model, but for every other attempt, feel free to check out the SVM and KNN models.
 I ultimately decided to stick with simple, to get the most straightforward results.
 
+# Disclaimer
+
+I, being new to data science, did not personally know how to program all of this from scratch. Hence, I have used the internet to my advantage so that I was able to provide these visualizations. Here are the websites I have used to help me on this project.
+
+https://stackabuse.com/k-nearest-neighbors-algorithm-in-python-and-scikit-learn/
+https://www.geeksforgeeks.org/k-nearest-neighbor-algorithm-in-python/
+https://towardsdatascience.com/logistic-regression-using-python-sklearn-numpy-mnist-handwriting-recognition-matplotlib-a6b31e2b166a
+https://towardsdatascience.com/building-a-logistic-regression-in-python-step-by-step-becd4d56c9c8
+https://towardsdatascience.com/support-vector-machines-explained-with-python-examples-cb65e8172c85
+
+Thank you.
+
+
 
 
 
